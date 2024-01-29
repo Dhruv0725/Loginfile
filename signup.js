@@ -1,23 +1,28 @@
-import { getUsers, updateList } from "./data.js";
+import { getUsers } from "./data.js";
 
 const userList = getUsers();
 document.addEventListener("DOMContentLoaded", function () {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   //console.log(localStorage.getItem("currentUser"));
-  console.log(currentUser);
+  //console.log(currentUser);
   if (!currentUser) {
-    window.location.href = "/index.html";
+    const currentPath = window.location.pathname;
+
+    const newPath = "/index.html";
+    const newUrl = currentPath.replace("/signup.html", "") + newPath;
+
+    window.location.href = newUrl;
   }
-  console.log(document.querySelector(".myForm"));
-  document.querySelector(".signupsubmit").addEventListener("click", () => {
-    console.log("djdjfk");
-  });
+  //console.log(document.querySelector(".myForm"));
+  // document.querySelector(".signupsubmit").addEventListener("click", () => {
+  //   console.log("djdjfk");
+  // });
 
   document.querySelector(".myForm").addEventListener("submit", (e) => {
     e.preventDefault();
-    console.log("logged");
-    console.log(e);
-    console.log(validateSignUpForm());
+    // console.log("logged");
+    // console.log(e);
+    validateSignUpForm();
 
     /*-------------------*/
   });
@@ -51,7 +56,7 @@ function validateSignUpForm() {
     return false;
   }
 
-  var age = calculateAge(new Date(dateOfBirth));
+  let age = calculateAge(new Date(dateOfBirth));
   if (age < 20) {
     alert("User must be at least 20 years old.");
     return false;
@@ -67,7 +72,7 @@ function validateSignUpForm() {
     return false;
   }
 
-  var language = document.getElementById("language").value;
+  const language = document.getElementById("language").value;
   if (language !== "English" && language !== "Hindi") {
     alert("Language should be either English or Hindi.");
     return false;
@@ -89,15 +94,19 @@ function validateSignUpForm() {
   };
 
   localStorage.setItem("currentUser", JSON.stringify(newUser));
-  window.location.href = "webpage.html";
+  const currentPath = window.location.pathname;
 
-  //   console.log(currentUser);
+  const newPath = "/webpage.html";
+  const newUrl = currentPath.replace("/signup.html", "") + newPath;
+  // console.log(newUrl);
+  window.location.href = newUrl;
+  // console.log(currentUser);
 }
 
 function calculateAge(birthDate) {
-  var currentDate = new Date();
-  var age = currentDate.getFullYear() - birthDate.getFullYear();
-  var monthDiff = currentDate.getMonth() - birthDate.getMonth();
+  const currentDate = new Date();
+  let age = currentDate.getFullYear() - birthDate.getFullYear();
+  const monthDiff = currentDate.getMonth() - birthDate.getMonth();
 
   if (
     monthDiff < 0 ||

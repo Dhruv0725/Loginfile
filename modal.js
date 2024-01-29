@@ -33,11 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
       /*------doing updation*/
       const user = currentUser.username;
       const pass = currentUser.password;
-      const userf = users.find(
-        (u) => u.username === user && u.password === pass
-      );
 
-      console.log(currentUser);
+      //console.log(currentUser);
       const usernameElement = document.getElementById("username");
       const designationElement = document.getElementById("designation");
       const addressElement = document.getElementById("address");

@@ -65,8 +65,8 @@ function getUsers() {
 
 function updateUser(username, updatedData) {
   const userIndex = users.findIndex((user) => user.username === username);
-  console.log("In data file");
-  console.log(updatedData);
+  //console.log("In data file");
+  //console.log(updatedData);
   if (userIndex !== -1) {
     for (const prop in updatedData) {
       if (users[userIndex].hasOwnProperty(prop) && updatedData[prop] !== null) {
@@ -82,7 +82,4 @@ function updateUser(username, updatedData) {
   }
 }
 
-function updateList(newList) {
-  users = { ...users, ...newList };
-}
-export { getUsers, updateUser, updateList };
+export { getUsers, updateUser };

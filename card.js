@@ -3,7 +3,7 @@ import { getUsers, updateUser } from "./data.js";
 document.addEventListener("DOMContentLoaded", function () {
   let users = getUsers();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  console.log(currentUser);
+  //console.log(currentUser);
   if (currentUser) {
     const usernameElement = document.getElementById("username");
     const designationElement = document.getElementById("designation");

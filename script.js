@@ -1,4 +1,4 @@
-import { getUsers, updateList } from "./data.js";
+import { getUsers } from "./data.js";
 const users = getUsers();
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -10,7 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const handleLogin = (user) => {
     localStorage.setItem("currentUser", JSON.stringify(user));
-    window.location.href = "/webpage.html";
+
+    const currentPath = window.location.pathname;
+
+    const newPath = "/webpage.html";
+    let newUrl = currentPath.replace(/\/$/, "") + newPath;
+    newUrl = newUrl.replace("/index.html", "");
+    console.log(newUrl);
+    window.location.href = newUrl;
   };
 
   const loginForm = document.querySelector("form");
